@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:soft_keyboard/key/key_type.dart';
-import 'package:soft_keyboard/key/virtual_key.dart';
-import 'package:soft_keyboard/keyboard_input_controller.dart';
-import 'package:soft_keyboard/soft_keyboard_widget.dart';
+import 'package:flutter_soft_keyboard/key/key_type.dart';
+import 'package:flutter_soft_keyboard/key/virtual_key.dart';
+import 'package:flutter_soft_keyboard/keyboard_input_controller.dart';
+import 'package:flutter_soft_keyboard/soft_keyboard_widget.dart';
 import 'package:ripple_container/widget/container_decoration.dart';
 
 void main() {
