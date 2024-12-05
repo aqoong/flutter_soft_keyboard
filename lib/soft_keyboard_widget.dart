@@ -3,7 +3,7 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:soft_keyboard/key/key_widget.dart';
+import 'package:flutter_soft_keyboard/key/key_widget.dart';
 
 import 'key/virtual_key.dart';
 import 'keyboard_input_controller.dart';

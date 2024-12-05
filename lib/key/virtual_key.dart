@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:ripple_container/widget/container_decoration.dart';
-import 'package:soft_keyboard/key/key_type.dart';
+import 'package:flutter_soft_keyboard/key/key_type.dart';
 
 class VirtualKey {
   final String? label; // 키에 표시되는 텍스트 (KeyType이 character일 때 사용)

@@ -5,7 +5,7 @@
 import 'package:flutter/material.dart';
 import 'package:ripple_container/ripple_container.dart';
 import 'package:size_tailored_text/size_tailored_text.dart';
-import 'package:soft_keyboard/keyboard_input_controller.dart';
+import 'package:flutter_soft_keyboard/keyboard_input_controller.dart';
 
 import 'virtual_key.dart';
 

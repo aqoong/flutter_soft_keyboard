@@ -1,5 +1,5 @@
-name: soft_keyboard
-description: "A new Flutter project."
+name: flutter_soft_keyboard
+description: "Flutter Virtual SoftKeyboard Widget package"
 version: 0.0.1
 homepage: "https://github.com/aqoong/flutter_soft_keyboard"
 

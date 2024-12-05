@@ -1,4 +1,4 @@
-library soft_keyboard;
+library flutter_soft_keyboard;
 
 export 'key/virtual_key.dart';
 export 'key/key_widget.dart';
