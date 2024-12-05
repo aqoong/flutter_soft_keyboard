@@ -1,0 +1,21 @@
+name: soft_keyboard
+description: "A new Flutter project."
+version: 0.0.1
+homepage: "https://github.com/aqoong/flutter_soft_keyboard"
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  size_tailored_text: ^1.0.5
+  ripple_container: ^1.0.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+license: MIT
