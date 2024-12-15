@@ -6,5 +6,6 @@ enum KeyType {
   character,
   backspace,
   enter,
-  space
+  space,
+  clear,
 }
