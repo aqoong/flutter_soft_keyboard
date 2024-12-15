@@ -9,6 +9,8 @@ import 'key/virtual_key.dart';
 import 'keyboard_input_controller.dart';
 
 class SoftKeyboardWidget extends StatefulWidget {
+  /// This widget operates only within the size defined by [width] and [height].
+  /// Keys specified in [keyLayout] are positioned within the boundaries of [width] and [height].
   final double width;
   final double height;
 
