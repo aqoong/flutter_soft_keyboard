@@ -20,7 +20,8 @@ class KeyboardInputController extends ChangeNotifier {
 
   Function()? _keyEventListener;
 
-  void setKeyListener(Function(VirtualKey? lastKey, String enteredText) listener) {
+  void setKeyListener(
+      Function(VirtualKey? lastKey, String enteredText) listener) {
     _keyEventListener = () {
       listener(_lastInputKey, text);
     };

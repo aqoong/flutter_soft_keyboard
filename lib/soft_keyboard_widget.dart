@@ -44,7 +44,6 @@ class SoftKeyboardWidget extends StatefulWidget {
 }
 
 class _SoftKeyboardWidgetState extends State<SoftKeyboardWidget> {
-
   @override
   void initState() {
     super.initState();
@@ -100,7 +99,5 @@ class _SoftKeyboardWidgetState extends State<SoftKeyboardWidget> {
             .toList(),
       ));
 
-  void test() {
-
-  }
+  void test() {}
 }

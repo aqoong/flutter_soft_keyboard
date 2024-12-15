@@ -34,7 +34,7 @@ class VirtualKey {
     this.decoration,
     this.textStyle,
   }) : assert(
-  (type != KeyType.character || label != null),
-  'Character keys must have a label',
-  );
+          (type != KeyType.character || label != null),
+          'Character keys must have a label',
+        );
 }

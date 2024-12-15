@@ -47,7 +47,6 @@ class _MyHomePageState extends State<MyHomePage> {
     color: Colors.white,
   );
 
-
   @override
   void initState() {
     super.initState();
@@ -56,7 +55,6 @@ class _MyHomePageState extends State<MyHomePage> {
       print(enteredText);
     });
   }
-
 
   @override
   void dispose() {
@@ -74,8 +72,39 @@ class _MyHomePageState extends State<MyHomePage> {
           columnSpacing: 4,
           rowSpacing: 4,
           keyLayout: [
-            [VirtualKey(label: '1', decoration: keyDecoration, textStyle: keyTextStyle), VirtualKey(label: '2', decoration: keyDecoration, textStyle: keyTextStyle), VirtualKey(label: '3', decoration: keyDecoration, textStyle: keyTextStyle), VirtualKey(decoration: keyDecoration, textStyle: keyTextStyle, type: KeyType.backspace, icon: Icon(Icons.abc))],
-            [VirtualKey(label: '1', decoration: keyDecoration, textStyle: keyTextStyle), VirtualKey(label: '2', decoration: keyDecoration, textStyle: keyTextStyle), VirtualKey(label: '3', decoration: keyDecoration, textStyle: keyTextStyle)],
+            [
+              VirtualKey(
+                  label: '1',
+                  decoration: keyDecoration,
+                  textStyle: keyTextStyle),
+              VirtualKey(
+                  label: '2',
+                  decoration: keyDecoration,
+                  textStyle: keyTextStyle),
+              VirtualKey(
+                  label: '3',
+                  decoration: keyDecoration,
+                  textStyle: keyTextStyle),
+              VirtualKey(
+                  decoration: keyDecoration,
+                  textStyle: keyTextStyle,
+                  type: KeyType.backspace,
+                  icon: Icon(Icons.abc))
+            ],
+            [
+              VirtualKey(
+                  label: '1',
+                  decoration: keyDecoration,
+                  textStyle: keyTextStyle),
+              VirtualKey(
+                  label: '2',
+                  decoration: keyDecoration,
+                  textStyle: keyTextStyle),
+              VirtualKey(
+                  label: '3',
+                  decoration: keyDecoration,
+                  textStyle: keyTextStyle)
+            ],
           ],
           keyboardInputController: keyboardController,
         ),

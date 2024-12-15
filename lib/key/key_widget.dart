@@ -37,8 +37,8 @@ class KeyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.symmetric(
-        horizontal: rowSpacing/2,
-        vertical: columnSpacing/2,
+        horizontal: rowSpacing / 2,
+        vertical: columnSpacing / 2,
       ),
       child: RippleContainer(
           width: width,
