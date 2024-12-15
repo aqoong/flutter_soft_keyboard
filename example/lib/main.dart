@@ -51,9 +51,17 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     super.initState();
-    keyboardController.addListener(() {
-      print('${keyboardController.text} [${keyboardController.lastInputKey?.type}]');
+    keyboardController.setKeyListener((lastKey, enteredText) {
+      print(lastKey);
+      print(enteredText);
     });
+  }
+
+
+  @override
+  void dispose() {
+    keyboardController.dispose();
+    super.dispose();
   }
 
   @override
