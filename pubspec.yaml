@@ -1,6 +1,6 @@
 name: flutter_soft_keyboard
-description: "Flutter Virtual SoftKeyboard Widget package"
-version: 0.0.1
+description: "This Flutter package is a virtual keyboard widget that can be implemented using a 2D array."
+version: 1.0.0
 homepage: "https://github.com/aqoong/flutter_soft_keyboard"
 
 environment:
