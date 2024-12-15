@@ -54,8 +54,6 @@ class KeyboardInputController extends ChangeNotifier {
       case KeyType.clear:
         _textBuffer.clear();
         break;
-      default:
-        break;
     }
     _lastInputKey = key;
     notifyListeners();
