@@ -7,12 +7,23 @@ import 'package:ripple_container/widget/container_decoration.dart';
 import 'package:flutter_soft_keyboard/key/key_type.dart';
 
 class VirtualKey {
-  final String? label; // 키에 표시되는 텍스트 (KeyType이 character일 때 사용)
-  final KeyType type; // 키의 유형
-  final Icon? icon; // KeyType이 character가 아닌 경우 표시할 아이콘
+  /// [label]
+  /// Text displayed on the key (Required when KeyType is character).
+  final String? label;
+
+  /// [type] is Key's type , Enum KeyType
+  final KeyType type;
+
+  ///[icon]
+  ///Icon widget to be displayed on the key instead of text or alongside the text.
+  final Icon? icon;
   final Alignment iconAlignment;
 
+  ///[decoration] is Key decoration
+  ///This uses the ContainerDecoration type from the ripple_container package.
   final ContainerDecoration? decoration;
+
+  /// [textStyle] key text style
   final TextStyle? textStyle;
 
   VirtualKey({
@@ -23,8 +34,7 @@ class VirtualKey {
     this.decoration,
     this.textStyle,
   }) : assert(
-  (type == KeyType.character && label != null) ||
-      (type != KeyType.character && icon != null),
-  'Character keys must have a label, and non-character keys must have an icon.',
+  (type == KeyType.character && label != null),
+  'Character keys must have a label',
   );
 }
