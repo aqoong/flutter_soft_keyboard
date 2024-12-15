@@ -14,6 +14,15 @@ class SoftKeyboardWidget extends StatefulWidget {
 
   final KeyboardInputController keyboardInputController;
 
+  /// [keyLayout] is a crucial variable for implementing the key arrangement.
+  /// When provided as a 2D array, keys in each array are aligned and displayed accordingly.
+  ///
+  /// example
+  /// [
+  ///   [VirtualKey(...), VirtualKey(...), ...],
+  ///   [VirtualKey(...), VirtualKey(...), ...],
+  ///   ...
+  /// ]
   final List<List<VirtualKey>> keyLayout;
   final double columnSpacing;
   final double rowSpacing;
