@@ -21,6 +21,8 @@ class KeyWidget extends StatelessWidget {
   final double columnSpacing;
   final TextStyle? textStyle;
 
+  final Widget? child;
+
   const KeyWidget({
     super.key,
     required this.keyboardInputController,
@@ -31,6 +33,7 @@ class KeyWidget extends StatelessWidget {
     this.rowSpacing = 0,
     this.columnSpacing = 0,
     this.textStyle,
+    this.child,
   });
 
   @override
@@ -41,27 +44,38 @@ class KeyWidget extends StatelessWidget {
         vertical: columnSpacing / 2,
       ),
       child: RippleContainer(
-          width: width,
-          height: height,
-          decoration: keyData.decoration,
-          onTap: onTap,
-          child: Stack(
-            alignment: Alignment.center,
-            children: [
-              if ((keyData.label ?? '').isNotEmpty)
-                SizeTailoredTextWidget(
-                  keyData.label!,
-                  width: width,
-                  height: height,
-                  style: textStyle,
-                ),
-              if (keyData.icon != null)
-                Align(
-                  alignment: keyData.iconAlignment,
-                  child: keyData.icon,
-                ),
-            ],
-          )),
+        width: width,
+        height: height,
+        decoration: keyData.decoration,
+        onTap: onTap,
+        child: LayoutBuilder(
+          builder: (context, constraints) => containerChild(child),
+        ),
+      ),
     );
+  }
+
+  Widget containerChild(Widget? child) {
+    if (child != null) {
+      return child;
+    } else {
+      return Stack(
+        alignment: Alignment.center,
+        children: [
+          if ((keyData.label ?? '').isNotEmpty)
+            SizeTailoredTextWidget(
+              keyData.label!,
+              width: width,
+              height: height,
+              style: textStyle,
+            ),
+          if (keyData.icon != null)
+            Align(
+              alignment: keyData.iconAlignment,
+              child: keyData.icon,
+            ),
+        ],
+      );
+    }
   }
 }

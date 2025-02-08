@@ -92,6 +92,7 @@ class _SoftKeyboardWidgetState extends State<SoftKeyboardWidget> {
                     rowSpacing: widget.rowSpacing,
                     columnSpacing: widget.columnSpacing,
                     textStyle: e.textStyle,
+                    child: e.child,
                   ),
                 ),
               ),

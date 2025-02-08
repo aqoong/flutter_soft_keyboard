@@ -26,6 +26,9 @@ class VirtualKey {
   /// [textStyle] key text style
   final TextStyle? textStyle;
 
+  /// If [child] is not null, it is expressed ignoring settings except for [type] and [decoration].
+  final Widget? child;
+
   VirtualKey({
     this.label,
     this.type = KeyType.character,
@@ -33,8 +36,9 @@ class VirtualKey {
     this.iconAlignment = Alignment.topCenter,
     this.decoration,
     this.textStyle,
+    this.child,
   }) : assert(
-          (type != KeyType.character || label != null),
+          (child == null ? (type != KeyType.character || label != null) : true),
           'Character keys must have a label',
         );
 }

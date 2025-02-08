@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_soft_keyboard/key/key_type.dart';
-import 'package:flutter_soft_keyboard/key/virtual_key.dart';
-import 'package:flutter_soft_keyboard/keyboard_input_controller.dart';
-import 'package:flutter_soft_keyboard/soft_keyboard_widget.dart';
-import 'package:ripple_container/widget/container_decoration.dart';
+import 'package:flutter_soft_keyboard/soft_keyboard.dart';
 
 void main() {
   runApp(const MyApp());
@@ -51,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     keyboardController.setKeyListener((lastKey, enteredText) {
-      print(lastKey);
+      print('last key type : ${lastKey?.type}');
       print(enteredText);
     });
   }
@@ -89,7 +85,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   decoration: keyDecoration,
                   textStyle: keyTextStyle,
                   type: KeyType.backspace,
-                  icon: Icon(Icons.abc))
+                  icon: const Icon(Icons.abc))
             ],
             [
               VirtualKey(
@@ -104,6 +100,17 @@ class _MyHomePageState extends State<MyHomePage> {
                   label: '3',
                   decoration: keyDecoration,
                   textStyle: keyTextStyle)
+            ],
+            [
+              VirtualKey(
+                decoration: keyDecoration,
+                child: Container(
+                  width: double.maxFinite,
+                  height: double.maxFinite,
+                  color: Colors.blue,
+                  child: const Text('Custom Widget'),
+                ),
+              )
             ],
           ],
           keyboardInputController: keyboardController,

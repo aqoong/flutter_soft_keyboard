@@ -39,22 +39,19 @@ class KeyboardInputController extends ChangeNotifier {
   void onKeyPress(VirtualKey key) {
     switch (key.type) {
       case KeyType.character:
-        _textBuffer.write(key.label); // 문자 키 추가
-        break;
+        if (key.label != null) {
+          _textBuffer.write(key.label); // 문자 키 추가
+        }
       case KeyType.backspace:
         if (_textBuffer.isNotEmpty) {
           _removeLastString(_textBuffer);
         }
-        break;
       case KeyType.enter:
         _textBuffer.write('\n');
-        break;
       case KeyType.space:
         _textBuffer.write(' ');
-        break;
       case KeyType.clear:
         _textBuffer.clear();
-        break;
     }
     _lastInputKey = key;
     notifyListeners();
