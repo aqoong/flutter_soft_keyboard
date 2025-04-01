@@ -5,8 +5,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_soft_keyboard/key/key_widget.dart';
 
-import 'key/virtual_key.dart';
-import 'keyboard_input_controller.dart';
+import 'package:flutter_soft_keyboard/key/virtual_key.dart';
+import 'package:flutter_soft_keyboard/keyboard_input_controller.dart';
 
 class SoftKeyboardWidget extends StatefulWidget {
   /// This widget operates only within the size defined by [width] and [height].
@@ -30,13 +30,13 @@ class SoftKeyboardWidget extends StatefulWidget {
   final double rowSpacing;
 
   const SoftKeyboardWidget({
-    super.key,
     required this.keyboardInputController,
     required this.width,
     required this.height,
     required this.keyLayout,
     this.columnSpacing = 6,
     this.rowSpacing = 6,
+    super.key,
   });
 
   @override
@@ -55,9 +55,7 @@ class _SoftKeyboardWidgetState extends State<SoftKeyboardWidget> {
       width: widget.width,
       height: widget.height,
       child: Column(
-        mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
         children: widget.keyLayout
             .asMap()
             .map(
@@ -73,32 +71,31 @@ class _SoftKeyboardWidgetState extends State<SoftKeyboardWidget> {
   }
 
   Widget keyRow(int rowIndex) => Expanded(
-      flex: 1,
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: widget.keyLayout[rowIndex]
-            .map(
-              (e) => Expanded(
-                flex: 1,
-                child: LayoutBuilder(
-                  builder: (context, constraints) => KeyWidget(
-                    keyboardInputController: widget.keyboardInputController,
-                    keyData: e,
-                    onTap: () => widget.keyboardInputController.onKeyPress(e),
-                    width: constraints.maxWidth,
-                    height: constraints.maxHeight,
-                    rowSpacing: widget.rowSpacing,
-                    columnSpacing: widget.columnSpacing,
-                    textStyle: e.textStyle,
-                    child: e.child,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: widget.keyLayout[rowIndex]
+              .map(
+                (e) => Expanded(
+                  child: LayoutBuilder(
+                    builder: (context, constraints) => KeyWidget(
+                      keyboardInputController: widget.keyboardInputController,
+                      keyData: e,
+                      onTap: () => widget.keyboardInputController.onKeyPress(e),
+                      onLongPress: () =>
+                          widget.keyboardInputController.onKeyPress(e),
+                      onDragEnd: () =>
+                          widget.keyboardInputController.onKeyPress(e),
+                      width: constraints.maxWidth,
+                      height: constraints.maxHeight,
+                      rowSpacing: widget.rowSpacing,
+                      columnSpacing: widget.columnSpacing,
+                      textStyle: e.textStyle,
+                      child: e.child,
+                    ),
                   ),
                 ),
-              ),
-            )
-            .toList(),
-      ));
-
-  void test() {}
+              )
+              .toList(),
+        ),
+      );
 }

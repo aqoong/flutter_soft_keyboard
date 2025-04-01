@@ -7,13 +7,15 @@ import 'package:ripple_container/ripple_container.dart';
 import 'package:size_tailored_text/size_tailored_text.dart';
 import 'package:flutter_soft_keyboard/keyboard_input_controller.dart';
 
-import 'virtual_key.dart';
+import 'package:flutter_soft_keyboard/key/virtual_key.dart';
 
 class KeyWidget extends StatelessWidget {
   final KeyboardInputController keyboardInputController;
 
   final VirtualKey keyData;
   final VoidCallback? onTap;
+  final VoidCallback? onLongPress;
+  final VoidCallback? onDragEnd;
 
   final double width;
   final double height;
@@ -24,16 +26,18 @@ class KeyWidget extends StatelessWidget {
   final Widget? child;
 
   const KeyWidget({
-    super.key,
     required this.keyboardInputController,
     required this.width,
     required this.height,
     required this.keyData,
-    required this.onTap,
+    this.onTap,
+    this.onLongPress,
+    this.onDragEnd,
     this.rowSpacing = 0,
     this.columnSpacing = 0,
     this.textStyle,
     this.child,
+    super.key,
   });
 
   @override
@@ -48,6 +52,8 @@ class KeyWidget extends StatelessWidget {
         height: height,
         decoration: keyData.decoration,
         onTap: onTap,
+        onLongPress: onLongPress,
+        onDragEnd: onDragEnd,
         child: LayoutBuilder(
           builder: (context, constraints) => containerChild(child),
         ),
