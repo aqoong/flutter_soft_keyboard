@@ -4,8 +4,8 @@
 
 import 'package:flutter/material.dart';
 
-import 'key/key_type.dart';
-import 'key/virtual_key.dart';
+import 'package:flutter_soft_keyboard/key/key_type.dart';
+import 'package:flutter_soft_keyboard/key/virtual_key.dart';
 
 class KeyboardInputController extends ChangeNotifier {
   final StringBuffer _textBuffer = StringBuffer();
