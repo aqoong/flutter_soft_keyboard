@@ -62,58 +62,61 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: SoftKeyboardWidget(
-          width: 400,
-          height: 300,
-          columnSpacing: 4,
-          rowSpacing: 4,
-          keyLayout: [
-            [
-              VirtualKey(
-                  label: '1',
+        child: Container(
+          color: Colors.deepPurple,
+          child: SoftKeyboardWidget(
+            width: 400,
+            height: 300,
+            columnSpacing: 4,
+            rowSpacing: 4,
+            keyLayout: [
+              [
+                VirtualKey(
+                    label: '1',
+                    decoration: keyDecoration,
+                    textStyle: keyTextStyle),
+                VirtualKey(
+                    label: '2',
+                    decoration: keyDecoration,
+                    textStyle: keyTextStyle),
+                VirtualKey(
+                    label: '3',
+                    decoration: keyDecoration,
+                    textStyle: keyTextStyle),
+                VirtualKey(
+                    decoration: keyDecoration,
+                    textStyle: keyTextStyle,
+                    type: KeyType.backspace,
+                    icon: const Icon(Icons.abc))
+              ],
+              [
+                VirtualKey(
+                    label: '1',
+                    decoration: keyDecoration,
+                    textStyle: keyTextStyle),
+                VirtualKey(
+                    label: '2',
+                    decoration: keyDecoration,
+                    textStyle: keyTextStyle),
+                VirtualKey(
+                    label: '3',
+                    decoration: keyDecoration,
+                    textStyle: keyTextStyle)
+              ],
+              [
+                VirtualKey(
                   decoration: keyDecoration,
-                  textStyle: keyTextStyle),
-              VirtualKey(
-                  label: '2',
-                  decoration: keyDecoration,
-                  textStyle: keyTextStyle),
-              VirtualKey(
-                  label: '3',
-                  decoration: keyDecoration,
-                  textStyle: keyTextStyle),
-              VirtualKey(
-                  decoration: keyDecoration,
-                  textStyle: keyTextStyle,
-                  type: KeyType.backspace,
-                  icon: const Icon(Icons.abc))
+                  child: Container(
+                    width: double.maxFinite,
+                    height: double.maxFinite,
+                    color: Colors.blue,
+                    child: const Text('Custom Widget'),
+                  ),
+                )
+              ],
             ],
-            [
-              VirtualKey(
-                  label: '1',
-                  decoration: keyDecoration,
-                  textStyle: keyTextStyle),
-              VirtualKey(
-                  label: '2',
-                  decoration: keyDecoration,
-                  textStyle: keyTextStyle),
-              VirtualKey(
-                  label: '3',
-                  decoration: keyDecoration,
-                  textStyle: keyTextStyle)
-            ],
-            [
-              VirtualKey(
-                decoration: keyDecoration,
-                child: Container(
-                  width: double.maxFinite,
-                  height: double.maxFinite,
-                  color: Colors.blue,
-                  child: const Text('Custom Widget'),
-                ),
-              )
-            ],
-          ],
-          keyboardInputController: keyboardController,
+            keyboardInputController: keyboardController,
+          ),
         ),
       ),
     );

@@ -19,8 +19,8 @@ class KeyWidget extends StatelessWidget {
 
   final double width;
   final double height;
-  final double rowSpacing;
-  final double columnSpacing;
+
+  final EdgeInsets? margin;
   final TextStyle? textStyle;
 
   final Widget? child;
@@ -33,8 +33,7 @@ class KeyWidget extends StatelessWidget {
     this.onTap,
     this.onLongPress,
     this.onDragEnd,
-    this.rowSpacing = 0,
-    this.columnSpacing = 0,
+    this.margin,
     this.textStyle,
     this.child,
     super.key,
@@ -43,10 +42,7 @@ class KeyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(
-        horizontal: rowSpacing / 2,
-        vertical: columnSpacing / 2,
-      ),
+      margin: margin,
       child: RippleContainer(
         width: width,
         height: height,
