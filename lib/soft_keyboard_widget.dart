@@ -51,7 +51,7 @@ class SoftKeyboardWidget extends StatefulWidget {
 }
 
 class _SoftKeyboardWidgetState extends State<SoftKeyboardWidget> {
-  late final double itemHeight;
+  double itemHeight = 0;
 
   // double? commonWidth;
 
@@ -59,9 +59,8 @@ class _SoftKeyboardWidgetState extends State<SoftKeyboardWidget> {
   void initState() {
     super.initState();
 
-    itemHeight =
-        (widget.height - widget.rowSpacing * (widget.keyLayout.length - 1)) /
-            widget.keyLayout.length;
+    itemHeight = calItemHeight(
+        widget.height, widget.rowSpacing, widget.keyLayout.length);
 
     // if (widget.fitToMaxRow) {
     //   final longIndex = findLongestRowIndex(widget.keyLayout);
@@ -72,11 +71,27 @@ class _SoftKeyboardWidgetState extends State<SoftKeyboardWidget> {
   }
 
   @override
+  void didUpdateWidget(SoftKeyboardWidget oldWidget) {
+    if (oldWidget.width != widget.width ||
+        oldWidget.height != widget.height ||
+        oldWidget.columnSpacing != widget.columnSpacing ||
+        oldWidget.rowSpacing != widget.rowSpacing) {
+      itemHeight = calItemHeight(
+        widget.height,
+        widget.rowSpacing,
+        widget.keyLayout.length,
+      );
+    }
+    super.didUpdateWidget(oldWidget);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: widget.width,
       height: widget.height,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: widget.keyLayout.indexed.map((e) {
           final rowIndex = e.$1;
           final row = e.$2;
@@ -94,7 +109,7 @@ class _SoftKeyboardWidgetState extends State<SoftKeyboardWidget> {
   }
 
   Widget keyRow(int rowIndex, List<VirtualKey> list) => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: list.indexed.map((e) {
           final columnIndex = e.$1;
           final itemWidth =
@@ -110,7 +125,7 @@ class _SoftKeyboardWidgetState extends State<SoftKeyboardWidget> {
             width: itemWidth,
             height: double.maxFinite,
             margin: EdgeInsets.only(
-              left: columnIndex == 0 ? 0 : widget.rowSpacing,
+              left: columnIndex == 0 ? 0 : widget.columnSpacing,
             ),
             textStyle: e.$2.textStyle,
             child: e.$2.child,
@@ -130,5 +145,14 @@ class _SoftKeyboardWidgetState extends State<SoftKeyboardWidget> {
     }
 
     return maxIndex;
+  }
+
+  double calItemHeight(double areaHeight, double rowSpacing, int rowLength) {
+    double itemHeight = (areaHeight - rowSpacing * (rowLength - 1)) / rowLength;
+    final checkSum = itemHeight * rowLength + rowSpacing * (rowLength - 1);
+    if (areaHeight - checkSum < 0) {
+      itemHeight = areaHeight / rowLength;
+    }
+    return itemHeight;
   }
 }
