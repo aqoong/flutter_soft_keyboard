@@ -27,3 +27,9 @@ An example can be found in the “Example” project.
 
 * Fixed a bug where button sizes changed due to spacing-related updates introduced in version 1.1.2.
 * Refactored the button rendering logic for improved structure and maintainability.
+
+## 1.1.4
+
+* Changed key alignment to be centered.
+* Fixed an issue where columnSpacing was mistakenly applied as rowSpacing.
+* Updated layout to rebuild when width, height, or spacing values change.
