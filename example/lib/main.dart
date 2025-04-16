@@ -67,8 +67,8 @@ class _MyHomePageState extends State<MyHomePage> {
           child: SoftKeyboardWidget(
             width: 400,
             height: 300,
-            columnSpacing: 4,
-            rowSpacing: 4,
+            // columnSpacing: 0,
+            // rowSpacing: 0,
             keyLayout: [
               [
                 VirtualKey(
