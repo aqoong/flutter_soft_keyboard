@@ -7,6 +7,7 @@ import 'package:flutter_soft_keyboard/key/key_widget.dart';
 
 import 'package:flutter_soft_keyboard/key/virtual_key.dart';
 import 'package:flutter_soft_keyboard/keyboard_input_controller.dart';
+import 'package:flutter_soft_keyboard/keyboard_row.dart';
 
 class SoftKeyboardWidget extends StatefulWidget {
   /// This widget operates only within the size defined by [width] and [height].
@@ -25,8 +26,7 @@ class SoftKeyboardWidget extends StatefulWidget {
   ///   [VirtualKey(...), VirtualKey(...), ...],
   ///   ...
   /// ]
-  final List<List<VirtualKey>> keyLayout;
-  final double columnSpacing;
+  final List<KeyboardRow> keyLayout;
   final double rowSpacing;
 
   // /// If `true`, the key size is determined based on the row with the most keys,
@@ -41,7 +41,6 @@ class SoftKeyboardWidget extends StatefulWidget {
     required this.width,
     required this.height,
     required this.keyLayout,
-    this.columnSpacing = 6,
     this.rowSpacing = 6,
     super.key,
   });
@@ -77,6 +76,7 @@ class _SoftKeyboardWidgetState extends State<SoftKeyboardWidget> {
       width: widget.width,
       height: widget.height,
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: widget.keyLayout.indexed.map((e) {
           final rowIndex = e.$1;
           final row = e.$2;
@@ -93,30 +93,33 @@ class _SoftKeyboardWidgetState extends State<SoftKeyboardWidget> {
     );
   }
 
-  Widget keyRow(int rowIndex, List<VirtualKey> list) => Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: list.indexed.map((e) {
-          final columnIndex = e.$1;
-          final itemWidth =
-              (widget.width - widget.columnSpacing * (list.length - 1)) /
-                  list.length;
+  Widget keyRow(int rowIndex, KeyboardRow row) {
+    final columnSpacing = row.columnSpacing;
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: row.keys.indexed.map((e) {
+        final columnIndex = e.$1;
+        final itemWidth =
+            (widget.width - columnSpacing * (row.rowLength - 1)) /
+                row.rowLength;
 
-          return KeyWidget(
-            keyboardInputController: widget.keyboardInputController,
-            keyData: e.$2,
-            onTap: () => widget.keyboardInputController.onKeyPress(e.$2),
-            onLongPress: () => widget.keyboardInputController.onKeyPress(e.$2),
-            onDragEnd: () => widget.keyboardInputController.onKeyPress(e.$2),
-            width: itemWidth,
-            height: double.maxFinite,
-            margin: EdgeInsets.only(
-              left: columnIndex == 0 ? 0 : widget.rowSpacing,
-            ),
-            textStyle: e.$2.textStyle,
-            child: e.$2.child,
-          );
-        }).toList(),
-      );
+        return KeyWidget(
+          keyboardInputController: widget.keyboardInputController,
+          keyData: e.$2,
+          onTap: () => widget.keyboardInputController.onKeyPress(e.$2),
+          onLongPress: () => widget.keyboardInputController.onKeyPress(e.$2),
+          onDragEnd: () => widget.keyboardInputController.onKeyPress(e.$2),
+          width: itemWidth,
+          height: double.maxFinite,
+          margin: EdgeInsets.only(
+            left: columnIndex == 0 ? 0 : columnSpacing,
+          ),
+          textStyle: e.$2.textStyle,
+          child: e.$2.child,
+        );
+      }).toList(),
+    );
+  }
 
   int findLongestRowIndex(List<List<VirtualKey>> keyLayout) {
     int maxIndex = 0;

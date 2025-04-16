@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_soft_keyboard/keyboard_row.dart';
 import 'package:flutter_soft_keyboard/soft_keyboard.dart';
 
 void main() {
@@ -67,10 +68,9 @@ class _MyHomePageState extends State<MyHomePage> {
           child: SoftKeyboardWidget(
             width: 400,
             height: 300,
-            // columnSpacing: 0,
-            // rowSpacing: 0,
+            rowSpacing: 2,
             keyLayout: [
-              [
+              KeyboardRow(keys: [
                 VirtualKey(
                     label: '1',
                     decoration: keyDecoration,
@@ -88,22 +88,25 @@ class _MyHomePageState extends State<MyHomePage> {
                     textStyle: keyTextStyle,
                     type: KeyType.backspace,
                     icon: const Icon(Icons.abc))
-              ],
-              [
-                VirtualKey(
-                    label: '1',
-                    decoration: keyDecoration,
-                    textStyle: keyTextStyle),
-                VirtualKey(
-                    label: '2',
-                    decoration: keyDecoration,
-                    textStyle: keyTextStyle),
-                VirtualKey(
-                    label: '3',
-                    decoration: keyDecoration,
-                    textStyle: keyTextStyle)
-              ],
-              [
+              ]),
+              KeyboardRow(
+                keys: [
+                  VirtualKey(
+                      label: '1',
+                      decoration: keyDecoration,
+                      textStyle: keyTextStyle),
+                  VirtualKey(
+                      label: '2',
+                      decoration: keyDecoration,
+                      textStyle: keyTextStyle),
+                  VirtualKey(
+                      label: '3',
+                      decoration: keyDecoration,
+                      textStyle: keyTextStyle)
+                ],
+                columnSpacing: 10,
+              ),
+              KeyboardRow(keys: [
                 VirtualKey(
                   decoration: keyDecoration,
                   child: Container(
@@ -113,7 +116,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: const Text('Custom Widget'),
                   ),
                 )
-              ],
+              ]),
             ],
             keyboardInputController: keyboardController,
           ),
