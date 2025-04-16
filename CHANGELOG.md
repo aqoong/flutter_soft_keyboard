@@ -21,3 +21,9 @@ An example can be found in the “Example” project.
 * Adjusted the margins of the widgets located at the top, bottom, left, and right edges to ensure
   that the SoftKeyboardWidget fully fits within its defined width and height.
 * Converted SoftKeyboardWidget to a StatelessWidget to eliminate unnecessary state management.
+
+
+## 1.1.3
+
+* Fixed a bug where button sizes changed due to spacing-related updates introduced in version 1.1.2.
+* Refactored the button rendering logic for improved structure and maintainability.
