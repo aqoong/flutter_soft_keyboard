@@ -7,6 +7,7 @@ import 'package:flutter_soft_keyboard/key/key_widget.dart';
 
 import 'package:flutter_soft_keyboard/key/virtual_key.dart';
 import 'package:flutter_soft_keyboard/keyboard_input_controller.dart';
+import 'package:flutter_soft_keyboard/soft_keyboard.dart';
 
 class SoftKeyboardWidget extends StatefulWidget {
   /// This widget operates only within the size defined by [width] and [height].
@@ -119,9 +120,10 @@ class _SoftKeyboardWidgetState extends State<SoftKeyboardWidget> {
           return KeyWidget(
             keyboardInputController: widget.keyboardInputController,
             keyData: e.$2,
-            onTap: () => widget.keyboardInputController.onKeyPress(e.$2),
-            onLongPress: () => widget.keyboardInputController.onKeyPress(e.$2),
-            onDragEnd: () => widget.keyboardInputController.onKeyPress(e.$2),
+            rippleCallbacks: RippleCallbacks(
+              onTapDown: (_) => widget.keyboardInputController.onKeyPress(e.$2),
+              onDragEnd: (_) => widget.keyboardInputController.onKeyPress(e.$2),
+            ),
             width: itemWidth,
             height: double.maxFinite,
             margin: EdgeInsets.only(

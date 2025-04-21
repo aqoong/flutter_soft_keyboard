@@ -13,9 +13,8 @@ class KeyWidget extends StatelessWidget {
   final KeyboardInputController keyboardInputController;
 
   final VirtualKey keyData;
-  final VoidCallback? onTap;
-  final VoidCallback? onLongPress;
-  final VoidCallback? onDragEnd;
+
+  final RippleCallbacks? rippleCallbacks;
 
   final double width;
   final double height;
@@ -30,9 +29,7 @@ class KeyWidget extends StatelessWidget {
     required this.width,
     required this.height,
     required this.keyData,
-    this.onTap,
-    this.onLongPress,
-    this.onDragEnd,
+    this.rippleCallbacks,
     this.margin,
     this.textStyle,
     this.child,
@@ -47,9 +44,7 @@ class KeyWidget extends StatelessWidget {
         width: width,
         height: height,
         decoration: keyData.decoration,
-        onTap: onTap,
-        onLongPress: onLongPress,
-        onDragEnd: onDragEnd,
+        rippleCallbacks: rippleCallbacks,
         child: LayoutBuilder(
           builder: (context, constraints) => containerChild(child),
         ),

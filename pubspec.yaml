@@ -1,6 +1,6 @@
 name: flutter_soft_keyboard
 description: "This Flutter package is a virtual keyboard widget that can be implemented using a 2D array."
-version: 1.1.4
+version: 1.1.5
 homepage: "https://aqoong.site/"
 repository: "https://github.com/aqoong/flutter_soft_keyboard"
 issue_tracker: "https://github.com/aqoong/flutter_soft_keyboard/issues"
@@ -13,7 +13,7 @@ dependencies:
     sdk: flutter
 
   size_tailored_text: ^1.0.6
-  ripple_container: ^1.1.0
+  ripple_container: ^1.2.0
 
 dev_dependencies:
   flutter_test:
