@@ -3,11 +3,11 @@
  */
 
 import 'package:flutter/material.dart';
-import 'package:flutter_soft_keyboard/key/key_widget.dart';
+import 'package:flutter_soft_keyboard/src/key/key_widget.dart';
+import 'package:flutter_soft_keyboard/src/key/virtual_key.dart';
+import 'package:flutter_soft_keyboard/src/keyboard_input_controller.dart';
+import 'package:ripple_container/widget/ripple_callbacks.dart';
 
-import 'package:flutter_soft_keyboard/key/virtual_key.dart';
-import 'package:flutter_soft_keyboard/keyboard_input_controller.dart';
-import 'package:flutter_soft_keyboard/soft_keyboard.dart';
 
 class SoftKeyboardWidget extends StatefulWidget {
   /// This widget operates only within the size defined by [width] and [height].
@@ -76,7 +76,8 @@ class _SoftKeyboardWidgetState extends State<SoftKeyboardWidget> {
     if (oldWidget.width != widget.width ||
         oldWidget.height != widget.height ||
         oldWidget.columnSpacing != widget.columnSpacing ||
-        oldWidget.rowSpacing != widget.rowSpacing) {
+        oldWidget.rowSpacing != widget.rowSpacing ||
+        oldWidget.keyLayout.length != widget.keyLayout.length) {
       itemHeight = calItemHeight(
         widget.height,
         widget.rowSpacing,
