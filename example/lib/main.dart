@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_soft_keyboard/soft_keyboard.dart';
+import 'package:flutter_soft_keyboard/flutter_soft_keyboard.dart';
 
 void main() {
   runApp(const MyApp());
