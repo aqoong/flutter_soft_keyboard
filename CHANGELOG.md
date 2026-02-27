@@ -32,3 +32,21 @@ An example can be found in the “Example” project.
 ### Changed
 - Replaced separate gesture handlers (`onTap`, `onLongPress`, `onDragEnd`) with the new `RippleCallbacks` interface.
 - This refactor improves maintainability and provides a unified way to bind all gesture-related callbacks to `RippleContainer`.
+
+## 1.2.0
+### Changed
+- didUpdateWidget에서 width/height/간격만 보고 itemHeight를 다시 계산하고 있어, 행 개수(keyLayout.length)만 바뀌는 경우에는 키 높이가 갱신되지 않았습니다.
+  → keyLayout.length가 바뀔 때도 itemHeight를 다시 계산하도록 조건을 추가해 수정했습니다.
+- 버그 / 동작 이슈
+  - setKeyListener를 여러 번 호출하면 리스너가 계속 쌓이는 문제 
+  - Backspace 시 substring(0, length-1) 사용으로 인한 이모지/한글 등 유니코드 깨짐 가능성 
+  - 예제에서 두 번째 행 라벨이 '1','2','3'으로 중복된 부분 
+- 코드 정리 
+  - 사용되지 않는 findLongestRowIndex 제거 또는 주석 정리 
+  - 주석 처리된 fitToMaxRow 관련 코드·의도 정리 
+  - ripple_container re-export 범위/문서 정리
+- 기능·API 제안 
+  - VirtualKey.copyWith 추가 
+  - 키 목록에 Key(ValueKey/ObjectKey) 지정 
+  - KeyboardInputController의 dispose 책임 문서화 
+  - KeyType 확장(shift, capsLock 등)
