@@ -3,11 +3,11 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:flutter_soft_keyboard/src/key/virtual_key.dart';
 import 'package:ripple_container/ripple_container.dart';
 import 'package:size_tailored_text/size_tailored_text.dart';
-import 'package:flutter_soft_keyboard/keyboard_input_controller.dart';
+import 'package:flutter_soft_keyboard/src/keyboard_input_controller.dart';
 
-import 'package:flutter_soft_keyboard/key/virtual_key.dart';
 
 class KeyWidget extends StatelessWidget {
   final KeyboardInputController keyboardInputController;

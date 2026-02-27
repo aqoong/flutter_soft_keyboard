@@ -32,6 +32,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final keyboardController = KeyboardInputController();
+  String text = '';
 
   final ContainerDecoration keyDecoration = ContainerDecoration(
     borderRadius: BorderRadius.circular(20),
@@ -49,6 +50,9 @@ class _MyHomePageState extends State<MyHomePage> {
     keyboardController.setKeyListener((lastKey, enteredText) {
       print('last key type : ${lastKey?.type}');
       print(enteredText);
+      setState(() {
+        text = enteredText;
+      });
     });
   }
 
@@ -62,61 +66,61 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
-          color: Colors.deepPurple,
-          child: SoftKeyboardWidget(
-            width: 400,
-            height: 300,
-            columnSpacing: 6,
-            rowSpacing: 6,
-            keyLayout: [
-              [
-                VirtualKey(
-                    label: '1',
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(text),
+            SoftKeyboardWidget(
+              width: 400,
+              height: 300,
+              columnSpacing: 6,
+              rowSpacing: 6,
+              keyLayout: [
+                [
+                  VirtualKey(
+                      label: '1',
+                      decoration: keyDecoration,
+                      textStyle: keyTextStyle),
+                  VirtualKey(
+                      label: '2',
+                      decoration: keyDecoration,
+                      textStyle: keyTextStyle),
+                  VirtualKey(
+                      label: '3',
+                      decoration: keyDecoration,
+                      textStyle: keyTextStyle),
+                  VirtualKey(
+                      decoration: keyDecoration,
+                      textStyle: keyTextStyle,
+                      type: KeyType.backspace,
+                      iconAlignment: Alignment.center,
+                      icon: const Icon(Icons.backspace))
+                ],
+                [
+                  VirtualKey(
+                      label: 'a',
+                      decoration: keyDecoration,
+                      textStyle: keyTextStyle),
+                  VirtualKey(
+                      label: 'b',
+                      decoration: keyDecoration,
+                      textStyle: keyTextStyle),
+                  VirtualKey(
+                      label: 'c',
+                      decoration: keyDecoration,
+                      textStyle: keyTextStyle)
+                ],
+                [
+                  VirtualKey(
                     decoration: keyDecoration,
-                    textStyle: keyTextStyle),
-                VirtualKey(
-                    label: '2',
-                    decoration: keyDecoration,
-                    textStyle: keyTextStyle),
-                VirtualKey(
-                    label: '3',
-                    decoration: keyDecoration,
-                    textStyle: keyTextStyle),
-                VirtualKey(
-                    decoration: keyDecoration,
-                    textStyle: keyTextStyle,
-                    type: KeyType.backspace,
-                    icon: const Icon(Icons.abc))
+                    type: KeyType.space,
+                    label: 'White Space',
+                  )
+                ],
               ],
-              [
-                VirtualKey(
-                    label: '1',
-                    decoration: keyDecoration,
-                    textStyle: keyTextStyle),
-                VirtualKey(
-                    label: '2',
-                    decoration: keyDecoration,
-                    textStyle: keyTextStyle),
-                VirtualKey(
-                    label: '3',
-                    decoration: keyDecoration,
-                    textStyle: keyTextStyle)
-              ],
-              [
-                VirtualKey(
-                  decoration: keyDecoration,
-                  child: Container(
-                    width: double.maxFinite,
-                    height: double.maxFinite,
-                    color: Colors.blue,
-                    child: const Text('Custom Widget'),
-                  ),
-                )
-              ],
-            ],
-            keyboardInputController: keyboardController,
-          ),
+              keyboardInputController: keyboardController,
+            )
+          ],
         ),
       ),
     );

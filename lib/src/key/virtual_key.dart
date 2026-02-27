@@ -3,8 +3,8 @@
  */
 
 import 'package:flutter/material.dart';
+import 'package:flutter_soft_keyboard/src/key/key_type.dart';
 import 'package:ripple_container/widget/container_decoration.dart';
-import 'package:flutter_soft_keyboard/key/key_type.dart';
 
 class VirtualKey {
   /// [label]
