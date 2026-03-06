@@ -62,9 +62,8 @@ class KeyWidget extends StatelessWidget {
           if ((keyData.label ?? '').isNotEmpty)
             SizeTailoredTextWidget(
               keyData.label!,
-              width: width,
-              height: height,
               style: textStyle,
+              textAlign: TextAlign.center,
             ),
           if (keyData.icon != null)
             Align(
