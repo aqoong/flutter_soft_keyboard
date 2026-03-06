@@ -53,5 +53,4 @@ An example can be found in the “Example” project.
 
 ## 1.2.1
 ### Changed
-- 의존성 패키지들의 버전을 고정했습니다.
 - `size_tailored_text` 의존성을 1.1.0으로 상향했습니다.
