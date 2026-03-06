@@ -1,6 +1,19 @@
 # FlutterSoftKeyboard
 
+[![pub package](https://img.shields.io/pub/v/flutter_soft_keyboard.svg)](https://pub.dev/packages/flutter_soft_keyboard)
+
 This Flutter package is a virtual keyboard widget that can be implemented using a 2D array.
+
+## Installation
+
+Add to your `pubspec.yaml`:
+
+```yaml
+dependencies:
+  flutter_soft_keyboard: ^1.2.1
+```
+
+Then run `flutter pub get`.
 
 
 ## How to Use
@@ -41,7 +54,7 @@ class _TestState extends State<Test> {
           height: 300,
           columnSpacing: 4,
           rowSpacing: 4,
-          keyLayout: keyLayout
+          keyLayout: keyLayout,
           keyboardInputController: keyboardController,
         ),
     ...

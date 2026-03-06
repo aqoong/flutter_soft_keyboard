@@ -50,3 +50,8 @@ An example can be found in the “Example” project.
   - 키 목록에 Key(ValueKey/ObjectKey) 지정 
   - KeyboardInputController의 dispose 책임 문서화 
   - KeyType 확장(shift, capsLock 등)
+
+## 1.2.1
+### Changed
+- 의존성 패키지들의 버전을 고정했습니다.
+- `size_tailored_text` 의존성을 1.1.0으로 상향했습니다.
