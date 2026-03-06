@@ -76,7 +76,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "1.2.0"
+    version: "1.2.1"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -158,10 +158,10 @@ packages:
     dependency: transitive
     description:
       name: size_tailored_text
-      sha256: fbc998b3d995457c3b29be1850d9f7510c790a2c6b9797a4a4c3e2c28e4976da
+      sha256: "07283bfb65c7781d8c4d6311a8ced37cfc52393a76189fb5e121be067d253de2"
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.8"
+    version: "1.1.0"
   sky_engine:
     dependency: transitive
     description: flutter
