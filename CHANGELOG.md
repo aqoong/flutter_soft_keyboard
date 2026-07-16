@@ -54,3 +54,33 @@ An example can be found in the “Example” project.
 ## 1.2.1
 ### Changed
 - `size_tailored_text` 의존성을 1.1.0으로 상향했습니다.
+
+## 1.3.0
+### Added
+- 키별 `onPressed` 콜백을 `VirtualKey`에 추가했습니다. 키가 눌리면 전역 리스너와
+  별개로, 입력이 반영된 뒤 호출됩니다.
+- `SoftKeyboardWidget`에 `defaultKeyDecoration` / `defaultKeyTextStyle`를 추가했습니다.
+  모든 키에 공통 적용되며, 개별 `VirtualKey`가 값을 지정하면 그 값이 우선합니다.
+  이제 키마다 decoration/textStyle을 반복하지 않아도 됩니다.
+- 특수키를 간결하게 만드는 팩토리 생성자를 추가했습니다:
+  `VirtualKey.char`, `VirtualKey.backspace`, `VirtualKey.space`,
+  `VirtualKey.enter`, `VirtualKey.clear`.
+- `KeyType`에 `shift`, `capsLock`을 추가했습니다. `shift`는 다음 문자 하나에만
+  적용되는 일회성 토글, `capsLock`은 다시 누를 때까지 유지되는 토글입니다.
+  `VirtualKey.shift()` / `VirtualKey.capsLock()` 팩토리 생성자와,
+  `KeyboardInputController`의 상태 게터(`isShiftEnabled`, `isCapsLockEnabled`,
+  `isUpperCase`)를 함께 제공합니다. Shift/CapsLock 상태에 따라 키 라벨과 입력
+  문자가 대문자로 자동 변환됩니다.
+- `VirtualKey.copyWith`를 추가했습니다.
+
+### Fixed
+- `setKeyListener`를 여러 번 호출하면 이전 리스너가 제거되지 않고 계속 누적되던 문제를 수정했습니다.
+  이제 새 리스너를 등록하기 전에 기존 리스너를 해제합니다.
+- Backspace가 UTF-16 코드 유닛 1개만 제거해 이모지·결합 문자가 깨지던 문제를 수정했습니다.
+  이제 사용자가 인지하는 문자(grapheme cluster) 단위로 제거합니다.
+- `keyLayout`가 비어 있을 때 키 높이 계산에서 0으로 나눠 레이아웃이 깨지던 문제를 방지하는 가드를 추가했습니다.
+
+### Removed
+- 사용되지 않던 `findLongestRowIndex` 메서드를 제거했습니다.
+
+기존 `VirtualKey(...)` 2D 배열 방식과 100% 호환됩니다.

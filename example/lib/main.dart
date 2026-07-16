@@ -48,8 +48,8 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     keyboardController.setKeyListener((lastKey, enteredText) {
-      print('last key type : ${lastKey?.type}');
-      print(enteredText);
+      debugPrint('last key type : ${lastKey?.type}');
+      debugPrint(enteredText);
       setState(() {
         text = enteredText;
       });
@@ -70,56 +70,43 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(text),
-            SoftKeyboardWidget(
-              width: 400,
-              height: 300,
-              columnSpacing: 6,
-              rowSpacing: 6,
-              keyLayout: [
-                [
-                  VirtualKey(
-                      label: '1',
-                      decoration: keyDecoration,
-                      textStyle: keyTextStyle),
-                  VirtualKey(
-                      label: '2',
-                      decoration: keyDecoration,
-                      textStyle: keyTextStyle),
-                  VirtualKey(
-                      label: '3',
-                      decoration: keyDecoration,
-                      textStyle: keyTextStyle),
-                  VirtualKey(
-                      decoration: keyDecoration,
-                      textStyle: keyTextStyle,
-                      type: KeyType.backspace,
-                      iconAlignment: Alignment.center,
-                      icon: const Icon(Icons.backspace))
+            LayoutBuilder(
+              builder: (context, constraints) => SoftKeyboardWidget(
+                width: constraints.maxWidth,
+                height: 300,
+                columnSpacing: 6,
+                rowSpacing: 6,
+                // Applied to every key that doesn't override them, so you no
+                // longer repeat decoration/textStyle on each key.
+                defaultKeyDecoration: keyDecoration,
+                defaultKeyTextStyle: keyTextStyle,
+                keyLayout: [
+                  [
+                    VirtualKey.char('1'),
+                    VirtualKey.char('2'),
+                    VirtualKey.char('3'),
+                    VirtualKey.backspace(icon: const Icon(Icons.backspace)),
+                  ],
+                  [
+                    VirtualKey.char('a'),
+                    VirtualKey.char('b'),
+                    // Per-key onPressed callback example.
+                    VirtualKey.char('c', onPressed: (key) {
+                      debugPrint('pressed: ${key.label}');
+                    }),
+                  ],
+                  [
+                    // shift: one-shot uppercase / capsLock: persistent uppercase.
+                    VirtualKey.shift(icon: const Icon(Icons.arrow_upward)),
+                    VirtualKey.capsLock(icon: const Icon(Icons.keyboard_capslock)),
+                  ],
+                  [
+                    VirtualKey.space(label: 'White Space'),
+                  ],
                 ],
-                [
-                  VirtualKey(
-                      label: 'a',
-                      decoration: keyDecoration,
-                      textStyle: keyTextStyle),
-                  VirtualKey(
-                      label: 'b',
-                      decoration: keyDecoration,
-                      textStyle: keyTextStyle),
-                  VirtualKey(
-                      label: 'c',
-                      decoration: keyDecoration,
-                      textStyle: keyTextStyle)
-                ],
-                [
-                  VirtualKey(
-                    decoration: keyDecoration,
-                    type: KeyType.space,
-                    label: 'White Space',
-                  )
-                ],
-              ],
-              keyboardInputController: keyboardController,
-            )
+                keyboardInputController: keyboardController,
+              ),
+            ),
           ],
         ),
       ),
