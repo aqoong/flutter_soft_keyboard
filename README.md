@@ -4,6 +4,22 @@
 
 This Flutter package is a virtual keyboard widget that can be implemented using a 2D array.
 
+## What's New in 1.3.0
+
+**Added**
+- **Per-key `onPressed` callback** on `VirtualKey` — fires after the input is applied, alongside the global listener.
+- **`KeyType.shift` / `KeyType.capsLock`** — `shift` is a one-shot uppercase toggle, `capsLock` is persistent. Both the entered text and the key faces update automatically. Read the state via `isShiftEnabled` / `isCapsLockEnabled` / `isUpperCase`.
+- **`defaultKeyDecoration` / `defaultKeyTextStyle`** on `SoftKeyboardWidget` — shared styles are no longer repeated on every key.
+- **Concise key factories** — `VirtualKey.char / backspace / space / enter / clear / shift / capsLock`.
+- **`VirtualKey.copyWith`**.
+
+**Fixed**
+- `setKeyListener` no longer accumulates listeners when called repeatedly.
+- Backspace removes a whole grapheme cluster, so emoji / combined characters are no longer corrupted.
+- Guard against division by zero when `keyLayout` is empty.
+
+> Fully backward compatible with the existing `VirtualKey(...)` 2D-array style. See [CHANGELOG.md](CHANGELOG.md) for full history.
+
 ## Installation
 
 Add to your `pubspec.yaml`:
